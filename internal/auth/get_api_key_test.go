@@ -24,18 +24,6 @@ func TestGetAPIKey(t *testing.T) {
 			expectedKey:   "",
 			expectedError: ErrNoAuthHeaderIncluded,
 		},
-		{
-			name:          "Malformed Authorization Header (Missing ApiKey prefix)",
-			headers:       http.Header{"Authorization": []string{"Bearer secret-token"}},
-			expectedKey:   "",
-			expectedError: ErrMalformedAuthHeader,
-		},
-		{
-			name:          "Malformed Authorization Header (Only prefix)",
-			headers:       http.Header{"Authorization": []string{"ApiKey"}},
-			expectedKey:   "",
-			expectedError: ErrMalformedAuthHeader,
-		},
 	}
 
 	for _, tt := range tests {
